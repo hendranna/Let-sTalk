@@ -11,6 +11,7 @@ gem 'cancan'
 gem 'mini_magick'
 gem 'carrierwave'
 gem 'kaminari'
+# gem 'twitter-bootstrap-rails'
 
 
 gem 'sqlite3'

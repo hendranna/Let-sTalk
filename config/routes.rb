@@ -2,11 +2,12 @@ Talk2me::Application.routes.draw do
   devise_for :users 
   # :controllers => {:registrations => "registrations"}
   devise_scope :user do
-    get '/login', to: 'devise/sessions#new'
+    get '/sign_in', to: 'devise/sessions#new'
+    get '/sign_up', to: 'devise/sessions#destroy'
   end
+  
 
-
-  root to: "user#index"
+  root to: "users#index"
 
   resources :users, except: [:new, :create, :update, :edit] 
 
