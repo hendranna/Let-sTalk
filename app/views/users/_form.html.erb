@@ -10,8 +10,64 @@
       </ul>
     </div>
   <% end %>
+  <div class="links">
+    <%= link_to 'View', @user %>
+    <%= link_to 'Back to Users', users_path %>
+  </div>
+
+  <div class="field">
+    <%= f.label :firstname %>
+    <%= f.text_field :firstname %><br />
+  </div>
+
+  <div class="field">
+    <%= f.label :lastname %>
+    <%= f.text_field :lastname %><br />
+  </div>
+
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email, :autofocus => true %><br />
+  </div>
+
+  <div class="field">
+    <%= f.label :biography %>
+    <%= f.text_area :biography %><br />
+  </div>
+
+  <div class="field">
+    <%= f.label :language %>
+    <%= f.text_field :language %><br />
+  </div>
+
+  <div class="field">
+    <%= f.label :skype_account %>
+    <%= f.text_field :skype_account %><br />
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <%= f.password_field :password %><br />
+  </div>
+
+  <div class="field"> 
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %><br />
+  </div>
+
+  <div class="field">
+    <%= f.file_field :avatar %>
+    <%= f.label :avatar %><br/>
+  </div>
+
+  <div class="field">
+    <%= f.label :available_to_meet %>
+    <%= f.select :available_to_meet, [['Available', true], ['Not Available', false]] %><br/>
+  </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Submit' %>
+    <%= link_to 'View', @user %>
+    <%= link_to 'Back to Users', users_path %>
   </div>
 <% end %>

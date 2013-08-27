@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(:version => 20130826145429) do
     t.string   "role"
     t.string   "firstname"
     t.string   "lastname"
-    t.string   "skype_accout"
+    t.string   "skype_account"
     t.string   "language"
     t.text     "biography"
     t.string   "avatar"
