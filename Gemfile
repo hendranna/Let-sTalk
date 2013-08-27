@@ -11,7 +11,7 @@ gem 'cancan'
 gem 'mini_magick'
 gem 'carrierwave'
 gem 'kaminari'
-# gem 'twitter-bootstrap-rails'
+
 
 
 gem 'sqlite3'
@@ -23,7 +23,7 @@ gem 'sqlite3'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
- 
+  gem 'twitter-bootstrap-rails' 
 
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
