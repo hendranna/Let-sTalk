@@ -9,7 +9,7 @@ Talk2me::Application.routes.draw do
 
   root to: "users#index"
 
-  resources :users, except: [:new, :create, :update, :edit] 
+  resources :users, except: [:new, :create, :update, :edit, :destroy] 
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

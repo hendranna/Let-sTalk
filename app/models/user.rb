@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :avatar, :biography, :firstname, :lastname,:language, :skype_account, :available_to_meet, :email, :password, :password_confirmation, :remember_me
+  attr_accessible :avatar, :biography, :firstname, :lastname,:language, :skype_account, :available_to_meet, :email, :password, :password_confirmation, :remember_me, :role 
   # attr_accessible :title, :body
 
   validates :firstname, presence: true, length:{minimum:2}
@@ -14,5 +14,14 @@ class User < ActiveRecord::Base
   validates :language, presence: true, length:{minimum:2}
   validates :biography, length: {maximum: 250,
     too_long: "%{count} characters is the maximum allowed." }
+
+  def role?(role)
+    self.role == role
+  end
+
+  private
+  def set_default_role
+    self.role ||= 'registered'
+  end
 
 end

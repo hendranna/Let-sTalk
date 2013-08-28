@@ -9,6 +9,7 @@ class Ability
       can :manage, User do |u|
         u.id == user.id
       end
+      can :read, User
       # can :like, User
       # can :unlike, User
       # can :read, :all
@@ -19,7 +20,7 @@ class Ability
 
     else
       can :read, :all
-      can [:create, :about, :thanks_for_registering], User
+      can :create, User
     end
     # Define abilities for the passed in user here. For example:
     #

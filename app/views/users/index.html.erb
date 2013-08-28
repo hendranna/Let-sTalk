@@ -1,22 +1,20 @@
 <h1>Users</h1>
 
-
-
-<hr />
-
 <div class="">
 <% @users.each do |user| %>
   <div class="span3">
     <%= image_tag user.avatar, :class => "img-rounded" %>
-    <%= link_to "#{user.firstname} #{user.lastname}", user %>
+    <%= link_to "#{user.firstname} #{user.lastname}", user_path(user) %>
+    
     <% if current_user == user %>
       <%= link_to 'Edit', edit_user_registration_path, :class => "btn" %>
-    <% else %>
-     <%= link_to 'Edit', "#", :class => "btn disabled" %>
+    <!--< % else %>
+      < %= link_to 'Edit', "#", :class => "btn disabled" %> -->
     <% end %>
-    <!-- < %if can? :update, user and current_user.role == 'registered' || 'admin' %> -->
-      <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
-    <!--< % end %> -->
+
+    <%if can? :delete, user %>
+      <%= link_to 'Destroy', user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
+    <% end %>
   </div>
 <% end %>
 </div>
