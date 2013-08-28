@@ -1,7 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h3><%= @user.firstname %> <%= @user.lastname %></h3>
 
+<h3><%= @user.firstname %> <%= @user.lastname %></h3>
+  
+  <% if @user.avatar? %>
+    <%= image_tag @user.avatar.detail.url %>
+  <% end %>
   <p>Biography:
     <%= @user.biography %>
   </p>

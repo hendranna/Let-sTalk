@@ -4,52 +4,52 @@
   <%= devise_error_messages! %>
 
   <div>
-    <%= f.label :email %><br />
-    <%= f.email_field :email, :autofocus => true %>
-  </div>
-
-  <div>
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </div>
-
-  <div>
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %>
-  </div>
-
-  <div>
-    <%= f.label :firstname, 'First Name' %><br />
+    <%= f.label :firstname %>
     <%= f.text_field :firstname %>
   </div>
 
   <div>
-    <%= f.label :lastname, 'Last Name' %><br />
+    <%= f.label :lastname %>
     <%= f.text_field :lastname %>
   </div>
 
   <div>
-    <%= f.label :biography %><br />
+    <%= f.label :email %>
+    <%= f.email_field :email, :autofocus => true %>
+  </div>
+
+  <div>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+
+  <div>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+  </div>
+
+  <div>
+    <%= f.label :biography %>
     <%= f.text_area :biography,  size: '20x3' %>
   </div>
  
   <div>
-    <%= f.label :language %><br />
+    <%= f.label :language %>
     <%= f.text_field :language %>
   </div>
 
   <div>
-    <%= f.label :skype_account %><br />
+    <%= f.label :skype_account %>
     <%= f.text_field :skype_account %>
   </div> 
 
    <div>
     <%= f.label :avatar %>
-    <%= f.file_field :avatar %><br />
+    <%= f.file_field :avatar %>
   </div>
 
   <div>
-    <%= f.label :available_to_meet %><br />
+    <%= f.label :available_to_meet %>
     <%= f.select :available_to_meet, [['Available', true], ['Not Available', false]] %>
   </div>
  

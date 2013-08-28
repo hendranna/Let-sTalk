@@ -6,7 +6,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :avatar, :biography, :firstname, :lastname,:language, :skype_account, :available_to_meet, :email, :password, :password_confirmation, :remember_me, :role 
+  attr_accessible :avatar, :biography, :firstname, :lastname,:language, :skype_account, :available_to_meet, :email, :password, :password_confirmation, :remember_me, :role
+   
+  mount_uploader :avatar, AvatarUploader
   # attr_accessible :title, :body
 
   validates :firstname, presence: true, length:{minimum:2}
