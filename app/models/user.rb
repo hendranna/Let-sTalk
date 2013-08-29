@@ -17,6 +17,9 @@ class User < ActiveRecord::Base
   validates :biography, length: {maximum: 250,
     too_long: "%{count} characters is the maximum allowed." }
 
+  has_many :friendships
+  has_many :friendships_as_friend, class_name: Friendship, foreign_key: friend_id
+
   def role?(role)
     self.role == role
   end
@@ -25,5 +28,9 @@ class User < ActiveRecord::Base
   def set_default_role
     self.role ||= 'registered'
   end
+
+  
+
+
 
 end
