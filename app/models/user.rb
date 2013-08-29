@@ -18,7 +18,27 @@ class User < ActiveRecord::Base
     too_long: "%{count} characters is the maximum allowed." }
 
   has_many :friendships
-  has_many :friendships_as_friend, class_name: Friendship, foreign_key: friend_id
+  has_many :friendships_as_friend, class_name: "Friendship", foreign_key: "friend_id"
+  # has_many :friendships_as_friender, class_name: "User", foreign_key: "user_id"
+
+
+
+  def all_friendships
+    friendships + friendships_as_friend
+  end
+
+  def all_confirmed_friendships
+    friendships.confirmed +friendships_as_friend.confirmed
+  end
+
+  def confirmed_friends
+    friends.where(confirmed: true)
+  end
+
+  def unconfirmed_friends
+    friends.where(confirmed: false)
+  end
+
 
   def role?(role)
     self.role == role
@@ -28,6 +48,8 @@ class User < ActiveRecord::Base
   def set_default_role
     self.role ||= 'registered'
   end
+
+
 
   
 
