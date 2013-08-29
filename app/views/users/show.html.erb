@@ -4,7 +4,7 @@
 <h3><%= @user.firstname %> <%= @user.lastname %></h3>
   
   <% if @user.avatar? %>
-    <%= image_tag @user.avatar.detail.url %>
+    <%= image_tag @user.avatar_url(:detail) %>
   <% end %>
   <p>Biography:
     <%= @user.biography %>
@@ -18,10 +18,11 @@
     <%= @user.skype_account %>
   </p>
 
-  <p>Available to meet:
-    <%= @user.available_to_meet %>
-  </p>
-
+  <section>
+    <% if @user.available_to_meet %>
+      <label class="label label-success">Available to meet</label>
+    <% end %>
+  </section>
 
 
 <% if can? :update, @user %>

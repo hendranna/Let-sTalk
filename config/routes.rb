@@ -10,7 +10,14 @@ Talk2me::Application.routes.draw do
   root to: "users#index"
 
   resources :users, except: [:new, :create, :update, :edit, :destroy]
-  resources :friendships 
+  resources :users do
+    resources :friendships
+  end 
+
+  match "/friendships" => "friendships#create", :via => :post, :as => :create_friendship
+
+  match "/friendships" => "friendships#destroy", :via => :delete, :as => :destroy_friendship
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

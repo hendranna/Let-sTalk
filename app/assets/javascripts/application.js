@@ -13,3 +13,18 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(document).ready( function() {
+  
+  $("button.close").on('click', function(){
+    $(this).parent().remove()
+  });
+
+  $('img').on('click', function() {
+    var info = $(this).parent().attr('href');
+    $(info).toggleClass('hidden');
+
+  });
+
+});
+
