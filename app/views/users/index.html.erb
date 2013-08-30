@@ -12,7 +12,8 @@
 
     <section>
       <label class="label label-success">
-        <%= pluralize(user.friendships.count, "Friends") %>
+        <%= pluralize(user.friendships.count, "Friend") %> |
+        <%= pluralize(user.friendships_as_friend.count, "Follower") %>
       </label>
     </section>
     

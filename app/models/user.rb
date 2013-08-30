@@ -40,17 +40,7 @@ class User < ActiveRecord::Base
     friendships + friendships_as_friend
   end
 
-  def all_confirmed_friendships
-    friendships.confirmed +friendships_as_friend.confirmed
-  end
-
-  def confirmed_friends
-    friends.where(confirmed: true)
-  end
-
-  def unconfirmed_friends
-    friends.where(confirmed: false)
-  end
+ 
 
 
   
