@@ -1,0 +1,8 @@
+<%= f.fields_for :user_languages do |user_language_form| %>
+  <%= user_language_form.label :level%>
+  <%= user_language_form.text_field :level%>
+  <%= user_language_form.collection_select :language_id, Language.all, :id, :name %>
+  <%= user_ingredient_form.link_to_remove "Remove language" %>
+<% end %>
+<%= f.link_to_add "Add language", :user_languages %>
+

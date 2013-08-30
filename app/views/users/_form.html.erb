@@ -65,6 +65,8 @@
     <%= f.select :available_to_meet, [['Available', true], ['Not Available', false]] %><br/>
   </div>
 
+  <%= render 'fields', :f => f %>
+  
   <div class="actions">
     <%= f.submit 'Submit' %>
     <%= link_to 'View', @user %>
