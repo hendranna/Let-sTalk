@@ -3,25 +3,24 @@
 <div class="">
 <% @users.each do |user| %>
   <div class="span3">
-    
     <h2><%= link_to "#{user.firstname} #{user.lastname}", user_path(user) %></h2>
     <% if user.avatar? %>
-    <%= link_to image_tag(user.avatar_url(:detail)), "#info#{user.id}"%>
+      <%= link_to image_tag(user.avatar_url(:detail)), "#info#{user.id}"%>
     <% else %>
-    <%= link_to image_tag('rails.png'), "#info#{user.id}"%>
+      <%= link_to image_tag('rails.png'), "#info#{user.id}"%>
     <% end %>
 
     <section>
       <label class="label label-success">
-        <%= pluralize(user.friendships.count, "Friend") %>
+        <%= pluralize(user.friendships.count, "Friends") %>
       </label>
     </section>
     
-   <section id="info<%= user.id %>" class="hidden">
-    <%= user.email %><br />
-    <%= user.skype_account %><br />
-    <%= user.biography %>
-   </section>
+    <section id="info<%= user.id %>" class="hidden">
+      <%= user.email %><br />
+      <%= user.skype_account %><br />
+      <%= user.biography %>
+    </section>
 
   <%= render 'manage', :user => user %>
   <%= render 'friendship', :user => user %>

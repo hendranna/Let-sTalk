@@ -19,7 +19,8 @@ $(document).ready( function() {
   $("button.close").on('click', function(){
     $(this).parent().remove()
   });
-
+// when you click on the image, you can see the info about that user
+// 
   $('img').on('click', function() {
     var info = $(this).parent().attr('href');
     $(info).toggleClass('hidden');

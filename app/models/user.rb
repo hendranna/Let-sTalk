@@ -20,8 +20,21 @@ class User < ActiveRecord::Base
   has_many :friendships
   has_many :friendships_as_friend, class_name: "Friendship", foreign_key: "friend_id"
   # has_many :friendships_as_friender, class_name: "User", foreign_key: "user_id"
+  
+  before_save :assign_role
+  
+  def assign_role
+    self.role = "registered" if self.role.nil?
+  end
 
+  def role?(role)
+    self.role == role
+  end
 
+  private
+  def set_default_role
+    self.role ||= 'registered'
+  end
 
   def all_friendships
     friendships + friendships_as_friend
@@ -40,14 +53,7 @@ class User < ActiveRecord::Base
   end
 
 
-  def role?(role)
-    self.role == role
-  end
-
-  private
-  def set_default_role
-    self.role ||= 'registered'
-  end
+  
 
 
 
