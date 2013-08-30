@@ -19,6 +19,9 @@ class User < ActiveRecord::Base
 
   has_many :friendships
   has_many :friendships_as_friend, class_name: "Friendship", foreign_key: "friend_id"
+
+  has_many :user_languages
+  has_many :languages, through: :user_languages
   # has_many :friendships_as_friender, class_name: "User", foreign_key: "user_id"
   
   before_save :assign_role

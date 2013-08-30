@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  neme: MyString
+  level: MyString
+  user_id: 1
+
+two:
+  neme: MyString
+  level: MyString
+  user_id: 1

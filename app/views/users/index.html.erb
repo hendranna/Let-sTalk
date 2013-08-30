@@ -1,9 +1,14 @@
-<h1>Users</h1>
+<h1>Let's Talk</h1>
 
 <div class="">
 <% @users.each do |user| %>
   <div class="span3">
-    <h2><%= link_to "#{user.firstname} #{user.lastname}", user_path(user) %></h2>
+    <h3><%= link_to "#{user.firstname} #{user.lastname}", user_path(user) %></h3>
+    <% user.user_languages.each do |user_language| %>
+      <%= user_language.language.name %>
+      <%= user_language.level %>
+    <% end %>
+    <br/>
     <% if user.avatar? %>
       <%= link_to image_tag(user.avatar_url(:detail)), "#info#{user.id}"%>
     <% else %>

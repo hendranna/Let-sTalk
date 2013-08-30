@@ -13,6 +13,9 @@ Talk2me::Application.routes.draw do
   resources :users do
     resources :friendships
   end 
+  resources :users do
+    resources :languages
+  end
 
   match "/friendships" => "friendships#create", :via => :post, :as => :create_friendship
 

@@ -6,6 +6,12 @@
   <% if @user.avatar? %>
     <%= image_tag @user.avatar_url(:detail) %>
   <% end %>
+
+  <% @user.user_languages.each do |user_language| %>
+    <%= @user_language.language.name(language) %>
+    <%= @user_language.level %>
+  <% end %>
+
   <p>Biography: <br/>
     <%= @user.biography %>
   </p>
