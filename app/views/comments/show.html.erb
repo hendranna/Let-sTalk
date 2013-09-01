@@ -1,0 +1,22 @@
+<div>
+  <p id="notice"><%= notice %></p>
+
+  <p>
+    <b>Content:</b>
+    <%= @comment.content %>
+  </p>
+
+  <p>
+    <b>User:</b>
+    <%= @comment.user %>
+  </p>
+
+
+  <div class="links">
+   <% if can? :edit, @comment %>
+      <%= link_to 'Edit', edit_comment_path(@comment) %>
+      <%= link_to 'Delete', destroy_comment_path(@comment)%>
+    <% end %>
+    <%= link_to 'Back', comments_path %>
+  </div>
+</div>

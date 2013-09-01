@@ -17,6 +17,10 @@ Talk2me::Application.routes.draw do
     resources :languages
   end
 
+  resources :users do
+    resources :comments
+  end
+
   match "/friendships" => "friendships#create", :via => :post, :as => :create_friendship
 
   match "/friendships" => "friendships#destroy", :via => :delete, :as => :destroy_friendship

@@ -30,6 +30,24 @@
   </section>
 
 
+  <div class="photo_comments">
+      <% @user.comments.each do |comment| %>
+          <% if comment.user.avatar? %>
+            <%= image_tag comment.user.avatar.mini.url %>
+          <% end %>
+            "<%= comment.content %>"
+            <%= comment.user.lastname %> on <%= comment.created_at.strftime('%c') %>
+          <%if can? :destroy, comment %>
+            <%=link_to 'delete', comment_path(comment.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+      <% end %>
+  </div><br>
+
+    <%= render partial: "comments/form" if can? :create, @comment %>
+  
+
+
+
 <% if can? :update, @user %>
   <%= link_to 'Edit Profile', edit_user_registration_path, :class => "btn" %>
 <% end %>
