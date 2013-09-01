@@ -49,9 +49,13 @@
           <!-- <a class="brand" href="">Talk2me</a> -->
           <%= link_to image_tag("talk.png"), root_path, :class => "brand" %>
           <div class="container-fluid nav-collapse">
-            <!-- <form class="navbar-search pull-left">
-              <input type="text" class="search-query" placeholder="Search">
-            </form> -->
+             <ul class="nav pull-right">
+          <li>
+            <%= form_tag search_path, class="nav-search pull-left", html: {method: :post} do |f| %>
+              <%= text_field_tag :q, params[:q], class="search-query" %>
+              <%= submit_tag 'Search!' , name: nil,  class="btn" %>
+            <% end %>
+          </li>
             <ul class="nav pull-right">
               <% unless current_user %>
                 <li><%= link_to "Login", new_user_session_path(@user) %></li>

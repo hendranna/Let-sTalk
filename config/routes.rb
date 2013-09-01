@@ -25,6 +25,11 @@ Talk2me::Application.routes.draw do
 
   match "/friendships" => "friendships#destroy", :via => :delete, :as => :destroy_friendship
 
+  match "/comments" => "comments#create", :via => :post, :as => :create_comment
+
+
+   match 'search', to: 'search#index', via: [:get, :post], as: :search
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

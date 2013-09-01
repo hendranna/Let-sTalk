@@ -1,0 +1,24 @@
+<h2 class="inner_shadow">Search Results</h2>
+  <br>
+  <% if (@languages + @users).empty? %>
+    Sorry, nothing matched your search term.
+  <% end %>
+
+  <div>
+    <% @albums.each do |album| %>
+      <div>
+        <b><em>Language:</em></b>
+        <%= link_to language.name, user_language_path(language.user, language) %>
+      </div>
+    <% end if @languages %>
+
+    <% @users.each do |user| %>
+      <div>
+        <b><em>Let's Talk Member:</em></b>
+        <%= link_to user.firstname, user_path(user) %>
+      </div>
+    <% end if @users %>
+
+  </div>
+  <br>
+</div>
