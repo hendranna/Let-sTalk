@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/ryanb/nested_form.git
+  revision: 42028bc06e72a848d297edc1467a969a7c9def57
+  specs:
+    nested_form (0.3.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -136,6 +142,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   mini_magick
+  nested_form!
   pg
   rails (= 3.2.14)
   rmagick

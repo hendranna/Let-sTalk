@@ -6,14 +6,13 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :avatar, :biography, :firstname, :lastname,:language, :skype_account, :available_to_meet, :email, :password, :password_confirmation, :remember_me, :role
+  attr_accessible :avatar, :biography, :firstname, :lastname, :skype_account, :available_to_meet, :email, :password, :password_confirmation, :remember_me, :role, :user_languages_attributes
    
   mount_uploader :avatar, AvatarUploader
   # attr_accessible :title, :body
 
   validates :firstname, presence: true, length:{minimum:2}
   validates :lastname, presence: true, length:{minimum:2}
-  validates :language, presence: true, length:{minimum:2}
   validates :biography, length: {maximum: 250,
     too_long: "%{count} characters is the maximum allowed." }
 
@@ -25,6 +24,8 @@ class User < ActiveRecord::Base
   # has_many :friendships_as_friender, class_name: "User", foreign_key: "user_id"
   
   before_save :assign_role
+
+  accepts_nested_attributes_for :user_languages, allow_destroy: true
   
   def assign_role
     self.role = "registered" if self.role.nil?

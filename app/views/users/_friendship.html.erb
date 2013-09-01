@@ -1,7 +1,7 @@
 <% unless user == current_user %>
   <% if current_user.friendships.where(friend_id: user.id).exists? %>
-    <%= button_to 'Unfollow', destroy_friendship_path(friend_id: user.id), method: :delete, :class => "btn btn-warning" %>
+    <%= button_to '-', destroy_friendship_path(friend_id: user.id), method: :delete, :class => "btn btn-warning" %>
   <% else %>
-    <%= button_to 'Follow', create_friendship_path(friend_id: user.id), method: :post, :class => "btn" %>
+    <%= button_to '+', create_friendship_path(friend_id: user.id), method: :post, :class => "btn" %>
   <% end %>
 <% end %>

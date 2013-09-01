@@ -1,6 +1,6 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+<%= nested_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
 
   <div>
@@ -42,15 +42,7 @@
     <%= f.text_area :biography,  size: '20x3' %>
   </div>
 
-  <div>
-    <%= f.label :language %>
-    <%= f.text_field :language %>
-  </div>
-
-  <div>
-    <%= f.label :skype_account %>
-    <%= f.text_field :skype_account %>
-  </div>
+  <%= render 'users/fields', :f => f %>
 
    <div>
     <%= f.file_field :avatar %>
