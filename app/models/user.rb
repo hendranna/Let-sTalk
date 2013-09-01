@@ -21,8 +21,9 @@ class User < ActiveRecord::Base
 
   has_many :user_languages
   has_many :languages, through: :user_languages
+  has_many :comments
   # has_many :friendships_as_friender, class_name: "User", foreign_key: "user_id"
-  
+  before_validation :downcase_username
   before_save :assign_role
 
   accepts_nested_attributes_for :user_languages, allow_destroy: true
@@ -38,6 +39,17 @@ class User < ActiveRecord::Base
   private
   def set_default_role
     self.role ||= 'registered'
+  end
+
+  def self.find_for_authentication(conditions)
+    conditions[:firstname].downcase!
+    conditions[:lastname].downcase!
+    super(conditions)
+  end
+
+  private
+  def downcase_username
+    self.username.downcase! if self.firstname && self.lastname
   end
 
   def all_friendships
