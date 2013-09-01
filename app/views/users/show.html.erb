@@ -29,21 +29,25 @@
     <% end %>
   </section>
 
+  <h6> Comments: </h6>
+    <%unless current_user %>
+      <p> Please <%= link_to 'log in', login_path %> to leave a comment </p>
+    <% end %>
 
-  <div class="photo_comments">
-      <% @user.comments.each do |comment| %>
-          <% if comment.user.avatar? %>
-            <%= image_tag comment.user.avatar.mini.url %>
-          <% end %>
-            "<%= comment.content %>"
-            <%= comment.user.lastname %> on <%= comment.created_at.strftime('%c') %>
-          <%if can? :destroy, comment %>
-            <%=link_to 'delete', comment_path(comment.id), method: :delete, data: { confirm: 'Are you sure?' } %>
-          <% end %>
+  <div>
+    <% @user.comments.each do |comment| %>
+      <% if comment.user.avatar? %>
+        <%= image_tag comment.user.avatar.mini.url %>
       <% end %>
+      "<%= comment.content %>"
+        <%= comment.user.lastname %> on <%= comment.created_at.strftime('%c') %>
+        <%if can? :destroy, comment %>
+          <%=link_to 'delete', comment_path(comment.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+    <% end %>   
   </div><br>
 
-    <%= render partial: "comments/form" if can? :create, @comment %>
+  <%= render partial: "comments/form" if can? :create, @comment %>
   
 
 

@@ -10,13 +10,11 @@ class Ability
         u.id == user.id
       end
       can :read, User
-      # can :like, User
-      # can :unlike, User
-      # can :read, :all
-      # can :create, Comment
-      # can :destroy, Comment do |c|
-      #   (c.user.id == user.id if (c.user and c.user)) || c.user.id == user.id
-      # end
+      can :read, :all
+      can :create, Comment
+      can :destroy, Comment do |c|
+        (c.user.id == user.id if (c.user and c.user)) || c.user.id == user.id
+      end
 
     else
       can :read, :all
