@@ -1,21 +1,25 @@
-<h2 class="inner_shadow">Search Results</h2>
+<h3>Search Results:</h3>
   <br>
-  <% if (@languages + @users).empty? %>
+  <% if (@languages && @users).empty? %>
     Sorry, nothing matched your search term.
   <% end %>
 
   <div>
-    <% @albums.each do |album| %>
+    <% @languages.each do |language| %>
       <div>
-        <b><em>Language:</em></b>
-        <%= link_to language.name, user_language_path(language.user, language) %>
+        <b><em>Language: <%= language.name %> </em></b>
+        <ul>
+          <% language.users.each do |user| %>
+            <li><%= link_to "#{user.firstname} #{user.lastname}", user_path(user) %></li>
+          <% end %>
+        <ul>
       </div>
     <% end if @languages %>
 
     <% @users.each do |user| %>
       <div>
         <b><em>Let's Talk Member:</em></b>
-        <%= link_to user.firstname, user_path(user) %>
+        <%= link_to "#{user.firstname} #{user.lastname}", user_path(user) %>
       </div>
     <% end if @users %>
 

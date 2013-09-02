@@ -51,9 +51,9 @@
           <div class="container-fluid nav-collapse">
              <ul class="nav pull-right">
           <li>
-            <%= form_tag search_path, class="nav-search pull-left", html: {method: :post} do |f| %>
-              <%= text_field_tag :q, params[:q], class="search-query" %>
-              <%= submit_tag 'Search!' , name: nil,  class="btn" %>
+            <%= form_tag search_path, class: "nav-search pull-left", html: {method: :post} do |f| %>
+              <%= text_field_tag :q, params[:q], class: "search-query" %>
+              <%= submit_tag 'Search!' , name: nil,  class: "btn" %>
             <% end %>
           </li>
             <ul class="nav pull-right">

@@ -46,7 +46,7 @@
         <% end %>
     <% end %>   
   </div><br>
-<%= render partial: "comments/form" if can? :create, @comment %>  
+<%= render "comments/form" if can? :create, @comment %>  
 
 
 
