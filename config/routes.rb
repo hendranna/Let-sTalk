@@ -25,6 +25,8 @@ Talk2me::Application.routes.draw do
     get 'page/:page', action: :index, on: :collection
   end
 
+  resources :pages
+
   match "/friendships" => "friendships#create", :via => :post, :as => :create_friendship
 
   match "/friendships" => "friendships#destroy", :via => :delete, :as => :destroy_friendship
@@ -34,6 +36,9 @@ Talk2me::Application.routes.draw do
 
   match 'search', to: 'search#index', via: [:get, :post], as: :search
 
+  # get "/pages/*id"  =>'pages#show', :as => :page, :format => false
+  # get '/about', to: 'users#about', as: :about
+  resources :pages, :controller => 'high_voltage/pages', :only => [:show]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

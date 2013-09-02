@@ -56,6 +56,7 @@ GEM
       warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.0.1)
+    high_voltage (1.2.4)
     hike (1.2.3)
     i18n (0.6.5)
     journey (1.0.4)
@@ -139,6 +140,7 @@ DEPENDENCIES
   carrierwave
   coffee-rails (~> 3.2.1)
   devise
+  high_voltage
   jquery-rails
   kaminari
   mini_magick
