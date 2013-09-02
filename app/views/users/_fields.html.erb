@@ -3,9 +3,6 @@
   <%= user_language_form.collection_select :language_id, Language.all, :id, :name %>
   <%= user_language_form.label :level %>
   <%= user_language_form.select :level, [['Low'], ['Medium'], ['High'], ['Native']] %>
- <!--< %= user_language_form.text_field :level %> 
- 
-   < %= user_language_form.collection_select :level, [['Native'], ['Low'], ['Medium'], ['High']] %> -->
 
   <%= user_language_form.link_to_remove "Remove language" %>
 <% end %>
