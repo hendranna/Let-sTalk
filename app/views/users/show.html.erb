@@ -37,7 +37,7 @@
   <div>
     <% @user.comments.each do |comment| %>
       <% comment.content %>
-      <%= comment.user.lastname %> on <%= comment.created_at.strftime('%c') %>
+      <%= comment.writer.lastname %> on <%= comment.created_at.strftime('%c') %>
       <%if can? :destroy, comment %>
         <%=link_to 'delete', user_comment_path(comment.id), method: :delete, data: { confirm: 'Are you sure?' } %>
       <% end %>

@@ -12,8 +12,10 @@
   <% end %>
 
   <div>
+    <% if can? :create, current_user %>
     <%= f.label :content, 'Leave a Comment:' %>
     <%= f.text_area :content, :autofocus => true, size: '100x3' %>
+  <% end %>
   </div>
 
   <div>

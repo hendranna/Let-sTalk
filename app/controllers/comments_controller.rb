@@ -45,11 +45,12 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     # params[:comment][:user_id] = params[:id]
-    params[:comment][:user_id] = current_user.id
     @comment = Comment.new(params[:comment])
+    @comment.user = User.find(params[:user_id])
+    @comment.writer = current_user
 
     if @comment.save
-      redirect_to :action => :show, :id => @comment.id
+      redirect_to @comment.user
       # CommentMailer.comment_notification(@comment, @comment.user).deliver
       # user_path = user_path(@comment.user.id)
     else
