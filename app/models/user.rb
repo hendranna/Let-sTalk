@@ -22,7 +22,8 @@ class User < ActiveRecord::Base
   has_many :user_languages
   has_many :languages, through: :user_languages
   has_many :comments
-  # has_many :friendships_as_friender, class_name: "User", foreign_key: "user_id"
+  has_many :written_comments, class_name: "Comment", foreign_key: "writer_id"
+  
   before_validation :downcase_username
   before_save :assign_role
 

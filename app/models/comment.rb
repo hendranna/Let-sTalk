@@ -3,4 +3,5 @@ class Comment < ActiveRecord::Base
   validates :content, presence: true, length:{maximum:500}
 
   belongs_to :user
+  belongs_to :writer,class_name: "User"
 end
