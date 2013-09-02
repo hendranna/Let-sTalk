@@ -12,11 +12,11 @@
   </p>
 
 
-  <div class="links">
+  <div>
    <% if can? :edit, @comment %>
-      <%= link_to 'Edit', edit_comment_path(@comment) %>
+      <%= link_to 'Edit', edit_user_comment_path(@comment) %>
       <%= link_to 'Delete', destroy_comment_path(@comment)%>
     <% end %>
-    <%= link_to 'Back', comments_path %>
-  </div>
+    <%= link_to 'Back', user_path(@comment.user.id)%>
+  </div
 </div>

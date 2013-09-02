@@ -11,15 +11,14 @@
   <% @comments.each do |comment| %>
     <tr>
       <td><%= comment.user %></td>
-      <td><%= link_to 'View', comment %></td>
-      <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
+      <td><%= link_to 'Edit', edit_user_comment_path(comment) %></td>
       <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
   </table>
 
   <br />
-  <div class="links">
+  <div>
     <%= link_to 'New Comment', new_comment_path %>
   </div>
 </div>

@@ -16,6 +16,7 @@ class CommentsController < ApplicationController
   # GET /comments/1.json
   def show
     @comment = Comment.find(params[:id])
+    # @comments = @user.comments
 
     respond_to do |format|
       format.html # show.html.erb
@@ -43,20 +44,17 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    params[:comment][:photo_id] = params[:id]
+    # params[:comment][:user_id] = params[:id]
     params[:comment][:user_id] = current_user.id
     @comment = Comment.new(params[:comment])
 
-    respond_to do |format|
-      if @comment.save
-        CommentMailer.comment_notification(@comment, @comment.user).deliver
-        user_path = user_path(@comment.user.id)
-        format.html { redirect_to photo_path, notice: 'Comment successfully created.' }
-        format.json { render json: @comment, status: :created, location: @comment }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
-      end
+    if @comment.save
+      redirect_to :action => :show, :id => @comment.id
+      # CommentMailer.comment_notification(@comment, @comment.user).deliver
+      # user_path = user_path(@comment.user.id)
+    else
+      format.html { render action: "new" }
+      format.json { render json: @comment.errors, status: :unprocessable_entity }
     end
   end
 
@@ -88,5 +86,4 @@ class CommentsController < ApplicationController
       format.json { head :no_content }
     end
   end
-end
 end

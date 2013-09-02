@@ -1,4 +1,4 @@
-<%= form_for(@comment, url: comment_user_path) do |f| %>
+<%= form_for(@comment, url: user_comments_path(@user)) do |f| %>
   <% if @comment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
@@ -12,7 +12,7 @@
   <% end %>
 
   <div>
-    <%= f.label :content, 'Leave a Comment:' %><br />
+    <%= f.label :content, 'Leave a Comment:' %>
     <%= f.text_area :content, :autofocus => true, size: '100x3' %>
   </div>
 

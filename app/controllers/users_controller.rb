@@ -26,6 +26,8 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @comment = Comment.new
+    @comments = @user.comments
     @user = User.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
