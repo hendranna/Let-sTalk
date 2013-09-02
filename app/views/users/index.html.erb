@@ -1,5 +1,5 @@
 <h1>Let's Talk</h1>
-
+<%= content_for :page_title, 'HighVoltage-About' %>
 <div class="">
 <% @users.each do |user| %>
   <div class="span3">
@@ -30,7 +30,6 @@
       <%= user.biography %>
     </section>
 
-  <%= content_for :page_title, 'HighVoltage-About' %>
   </div>
   <% end %>
 </div>

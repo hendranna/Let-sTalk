@@ -4,8 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:page_title) : "Let's Talk" %></title>
-    <%= csrf_meta_tags %>
+     <title><%= yield(:page_title) %></title>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
@@ -87,7 +86,7 @@
        <footer id="footer" class="container-fluid">
         <p>Let's Talk &copy; Company 2013</p>
         <ul>
-          <li><%= link_to "Let's Talk", page_path('about') %></li>
+          <li><%= link_to "Let's Talk", (page_path) %></li>
           <li>Twitter</li>
         </ul>
 

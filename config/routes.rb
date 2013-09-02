@@ -36,9 +36,9 @@ Talk2me::Application.routes.draw do
 
   match 'search', to: 'search#index', via: [:get, :post], as: :search
 
-  # get "/pages/*id"  =>'pages#show', :as => :page, :format => false
+  get "/pages/*id"  =>'pages#show', :as => :page, :format => false
   # get '/about', to: 'users#about', as: :about
-  resources :pages, :controller => 'high_voltage/pages', :only => [:show]
+  # resources :pages, :controller => 'high_voltage/pages', :only => [:show]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
