@@ -7,13 +7,15 @@ gem 'rails', '3.2.14'
 
 gem 'pg'
 gem 'devise'
+gem 'omniauth-google-oauth2'
 gem 'cancan'
 gem 'rmagick'
 gem 'mini_magick'
 gem 'carrierwave'
 gem 'kaminari'
 gem 'nested_form', :git => 'https://github.com/ryanb/nested_form.git'
-
+gem 'better_errors'
+gem 'binding_of_caller'
 gem 'sqlite3'
 
 
