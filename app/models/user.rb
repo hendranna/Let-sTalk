@@ -3,13 +3,11 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable,  :omniauthable,omniauth_providers: [:google_oauth2]
 
-  # Setup accessible (or protected) attributes for your model
-  attr_accessible :avatar, :biography, :firstname, :lastname, :skype_account, :available_to_meet, :email, :password, :password_confirmation, :remember_me, :role, :user_languages_attributes
+  attr_accessible :avatar, :biography, :firstname, :lastname, :skype_account, :available_to_meet, :email, :password, :password_confirmation, :remember_me, :role, :user_languages_attributes, :provider, :uid
    
   mount_uploader :avatar, AvatarUploader
-  # attr_accessible :title, :body
 
   validates :firstname, presence: true, length:{minimum:2}
   validates :lastname, presence: true, length:{minimum:2}
@@ -23,8 +21,7 @@ class User < ActiveRecord::Base
   has_many :languages, through: :user_languages
   has_many :comments
   has_many :written_comments, class_name: "Comment", foreign_key: "writer_id"
-  
-  before_validation :downcase_username
+
   before_save :assign_role
 
   accepts_nested_attributes_for :user_languages, allow_destroy: true
@@ -42,19 +39,31 @@ class User < ActiveRecord::Base
     self.role ||= 'registered'
   end
 
-  def self.find_for_authentication(conditions)
-    conditions[:firstname].downcase!
-    conditions[:lastname].downcase!
-    super(conditions)
-  end
-
-  private
-  def downcase_username
-    self.username.downcase! if self.firstname && self.lastname
-  end
+  # def self.find_for_authentication(conditions)
+  #   conditions[:firstname].downcase!
+  #   conditions[:lastname].downcase!
+  #   super(conditions)
+  # end
 
   def all_friendships
     friendships + friendships_as_friend
+  end
+
+  def self.from_omniauth(auth)
+    if user = User.find_by_email(auth.info.email)
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user
+    else
+      where(auth.slice(:provider, :uid)).first_or_create do |user|
+        user.provider = auth.provider
+        user.uid = auth.uid
+        user.email = auth.info.email
+        user.password = Devise.friendly_token[0,20]
+        user.firstname = auth.info.firstname
+        user.lastname = auth.info.lastname
+      end
+    end
   end
 
  

@@ -7,13 +7,15 @@ gem 'rails', '3.2.14'
 
 gem 'pg'
 gem 'devise'
+gem 'omniauth-google-oauth2'
 gem 'cancan'
 gem 'rmagick'
 gem 'mini_magick'
 gem 'carrierwave'
 gem 'kaminari'
 gem 'nested_form', :git => 'https://github.com/ryanb/nested_form.git'
-
+gem 'better_errors'
+gem 'binding_of_caller'
 gem 'sqlite3'
 
 
@@ -24,6 +26,12 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'twitter-bootstrap-rails' 
+  gem 'high_voltage'
+
+
+
+ 
+
 
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
