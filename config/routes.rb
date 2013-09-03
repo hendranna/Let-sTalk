@@ -1,4 +1,5 @@
 Talk2me::Application.routes.draw do
+
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
   # :controllers => {:registrations => "registrations"}
   devise_scope :user do
@@ -6,7 +7,10 @@ Talk2me::Application.routes.draw do
     get '/sign_up', to: 'devise/sessions#destroy'
   end
   
-  root to: "users#index"
+  authenticated :user do
+    root to: "users#index"
+  end
+  root to: "home#index"
 
   resources :users, except: [:new, :create, :update, :edit, :destroy] do
     resources :friendships
@@ -21,6 +25,7 @@ Talk2me::Application.routes.draw do
   resources :pages
 
   match "/friendships" => "friendships#create", :via => :post, :as => :create_friendship
+  match "users/:user_id/followers" => "friendships#followers", :as => :user_followers
 
   match "/friendships" => "friendships#destroy", :via => :delete, :as => :destroy_friendship
 

@@ -1,7 +1,9 @@
+<span class="pull-right">
 <% unless user == current_user %>
   <% if current_user.friendships.where(friend_id: user.id).exists? %>
-    <%= button_to '-', destroy_friendship_path(friend_id: user.id), method: :delete, :class => "btn btn-warning" %>
+    <%= button_to '- remove', destroy_friendship_path(friend_id: user.id), method: :delete, :class => "btn-mini pull-right" %>
   <% else %>
-    <%= button_to '+', create_friendship_path(friend_id: user.id), method: :post, :class => "btn" %>
+    <%= button_to '+ add', create_friendship_path(friend_id: user.id), method: :post, :class => "btn-mini pull-right" %>
   <% end %>
 <% end %>
+</span>
