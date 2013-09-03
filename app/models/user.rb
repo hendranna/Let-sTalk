@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :avatar, :biography, :firstname, :lastname, :skype_account, :available_to_meet, :email, :password, :password_confirmation, :remember_me, :role, :user_languages_attributes
+  attr_accessible :avatar, :biography, :firstname, :lastname, :skype_account, :available_to_meet, :email, :password, :password_confirmation, :remember_me, :role, :user_languages_attributes, :omniauthable,omniauth_providers: [:google_oauth2], :registerable, :trackable, :validatable, :reconverable
    
   mount_uploader :avatar, AvatarUploader
   # attr_accessible :title, :body
@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   has_many :user_languages
   has_many :languages, through: :user_languages
   has_many :comments
-  # has_many :friendships_as_friender, class_name: "User", foreign_key: "user_id"
+
   before_validation :downcase_username
   before_save :assign_role
 

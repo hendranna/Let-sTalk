@@ -7,6 +7,7 @@ gem 'rails', '3.2.14'
 
 gem 'pg'
 gem 'devise'
+gem 'omniauth-google-oauth2'
 gem 'cancan'
 gem 'rmagick'
 gem 'mini_magick'
