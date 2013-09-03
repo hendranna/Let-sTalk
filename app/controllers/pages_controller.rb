@@ -4,11 +4,6 @@ class PagesController < HighVoltage::PagesController
 
   protected 
     def layout_for_page
-      case params[:id] 
-      when 'about'
-        'about'
-      else
-        'application'
-      end   
+
     end
 end
