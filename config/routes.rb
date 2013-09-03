@@ -1,5 +1,5 @@
 Talk2me::Application.routes.draw do
-  devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks", registrations: "registrations"}
+  devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
   # :controllers => {:registrations => "registrations"}
   devise_scope :user do
     get '/sign_in', to: 'devise/sessions#new'
@@ -8,16 +8,9 @@ Talk2me::Application.routes.draw do
   
   root to: "users#index"
 
-  resources :users, except: [:new, :create, :update, :edit, :destroy]
-
-  resources :users do
+  resources :users, except: [:new, :create, :update, :edit, :destroy] do
     resources :friendships
-  end 
-  resources :users do
     resources :languages
-  end
-
-  resources :users do
     resources :comments
   end
   

@@ -14,9 +14,7 @@ gem 'mini_magick'
 gem 'carrierwave'
 gem 'kaminari'
 gem 'nested_form', :git => 'https://github.com/ryanb/nested_form.git'
-gem 'better_errors'
-gem 'binding_of_caller'
-gem 'sqlite3'
+gem 'high_voltage'
 
 
 
@@ -26,7 +24,7 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'twitter-bootstrap-rails' 
-  gem 'high_voltage'
+  
 
 
 
@@ -40,6 +38,12 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+group :development do
+  gem 'binding_of_caller'
+  gem 'better_errors'
+  gem 'sqlite3'
+
+end
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
