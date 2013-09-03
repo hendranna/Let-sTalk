@@ -21,7 +21,6 @@ class User < ActiveRecord::Base
   has_many :languages, through: :user_languages
   has_many :comments
 
-  before_validation :downcase_username
   before_save :assign_role
 
   accepts_nested_attributes_for :user_languages, allow_destroy: true
@@ -39,23 +38,18 @@ class User < ActiveRecord::Base
     self.role ||= 'registered'
   end
 
-  def self.find_for_authentication(conditions)
-    conditions[:firstname].downcase!
-    conditions[:lastname].downcase!
-    super(conditions)
-  end
-
-  private
-  def downcase_username
-    self.username.downcase! if self.firstname && self.lastname
-  end
+  # def self.find_for_authentication(conditions)
+  #   conditions[:firstname].downcase!
+  #   conditions[:lastname].downcase!
+  #   super(conditions)
+  # end
 
   def all_friendships
     friendships + friendships_as_friend
   end
 
-  def self.form_omniauth(auth)
-    if user = User.find_by_email(auto.info.email)
+  def self.from_omniauth(auth)
+    if user = User.find_by_email(auth.info.email)
       user.provider = auth.provider
       user.uid = auth.uid
       user
@@ -65,6 +59,8 @@ class User < ActiveRecord::Base
         user.uid = auth.uid
         user.email = auth.info.email
         user.password = Devise.friendly_token[0,20]
+        user.firstname = auth.info.firstname
+        user.lastname = auth.info.lastname
       end
     end
   end

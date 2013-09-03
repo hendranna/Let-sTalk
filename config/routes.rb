@@ -1,5 +1,5 @@
 Talk2me::Application.routes.draw do
-  devise_for :users, controllers: {omniauth_callbacks: "omniauth_calbacks"}
+  devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks", registrations: "registrations"}
   # :controllers => {:registrations => "registrations"}
   devise_scope :user do
     get '/sign_in', to: 'devise/sessions#new'
@@ -33,7 +33,6 @@ Talk2me::Application.routes.draw do
 
 
   match 'search', to: 'search#index', via: [:get, :post], as: :search
-  
 
 
 end

@@ -14,7 +14,8 @@ gem 'mini_magick'
 gem 'carrierwave'
 gem 'kaminari'
 gem 'nested_form', :git => 'https://github.com/ryanb/nested_form.git'
-
+gem 'better_errors'
+gem 'binding_of_caller'
 gem 'sqlite3'
 
 
