@@ -1,5 +1,4 @@
+
 <% @chats.each do |chat| %>
-  <li>
-    <%= link_to chat.from.firstname, chat_path(chat.from_id) %>
-  </li>
+  <li><%= link_to chat.from.firstname, chat_path(chat.from_id) %> </li>
 <% end %>

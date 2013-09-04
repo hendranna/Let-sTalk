@@ -15,10 +15,14 @@ class Ability
       can :destroy, Comment do |c|
         (c.user.id == user.id if (c.user and c.user)) || c.user.id == user.id
       end
-
+      can :create, Chat
+      can :destroy, Chat do |c|
+        (c.user.id == user.id if (c.user and c.user)) || c.user.id == user.id
+      end
     else
       can :read, :all
       can :create, User
+      can :read, User
     end
     # Define abilities for the passed in user here. For example:
     #

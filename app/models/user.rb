@@ -19,8 +19,12 @@ class User < ActiveRecord::Base
 
   has_many :user_languages
   has_many :languages, through: :user_languages
+
   has_many :comments
   has_many :written_comments, class_name: "Comment", foreign_key: "writer_id"
+  
+  has_many :chats 
+  has_many :chats_to, class_name: "Chat", foreign_key: "to_id"
 
   before_save :assign_role
 
