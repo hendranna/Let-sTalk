@@ -5,20 +5,22 @@ class ChatsController < ApplicationController
   # GET /chats
   # GET /chats.json
   def index
-    @chats = Chat.all
+    @chats = Chat.where(to_id: current_user.id)
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @chats }
+    end
+  end
 
   # GET /chats/1
   # GET /chats/1.json
   def show
-    @chat = Chat.find(params[:id])
-
+    @chats = Chat.where("from_id = ? AND to_id = ? OR from_id = ? AND to_id = ?", current_user, params[:id], params[:id], current_user)
+    
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @chat }
+      format.json { render json: @chats }
     end
   end
 
@@ -36,17 +38,15 @@ class ChatsController < ApplicationController
   # POST /chats
   # POST /chats.json
   def create
-    @comment = Comment.new(params[:comment])
-    @comment.user = User.find(params[:user_id])
-    @comment.writer = current_user
-
-    if @comment.save
+    @chat = Chat.new.where("from_id = ? AND to_id", current_user, params[:id])
+    
+    if @chat.save
       redirect_to @chat.user
     else
       format.html { render action: "new" }
-      format.json { render json: @comment.errors, status: :unprocessable_entity }
+      format.json { render json: @chat.errors, status: :unprocessable_entity }
     end
-  end
+  end 
 
   # DELETE /chats/1
   # DELETE /chats/1.json
@@ -56,12 +56,9 @@ class ChatsController < ApplicationController
     @chat.destroy
 
     respond_to do |format|
-      format.html { redirect_to user_path(user) }
+      format.html { redirect_to user_path(current_user) }
       format.json { head :no_content }
     end
   end
 
-
-    end
-  end
 end

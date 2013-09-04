@@ -1,0 +1,4 @@
+<h2>What did you say ???</h2>
+<% @chats.each do |chat| %>
+  <li><%= chat.from.firstname %> says: <%= chat.message %></li>
+<% end %> 

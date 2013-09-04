@@ -12,9 +12,10 @@ Talk2me::Application.routes.draw do
     resources :friendships
     resources :languages
     resources :comments
-    resources :chats
   end
   
+  resources :chats
+
   resources :users do 
     get 'page/:page', action: :index, on: :collection
   end

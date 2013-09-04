@@ -15,6 +15,7 @@ gem 'carrierwave'
 gem 'kaminari'
 gem 'nested_form', :git => 'https://github.com/ryanb/nested_form.git'
 gem 'high_voltage'
+gem 'pry'
 
 
 

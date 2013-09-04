@@ -14,15 +14,15 @@
 ActiveRecord::Schema.define(:version => 20130903143207) do
 
   create_table "chats", :force => true do |t|
-    t.integer  "from_id_id"
-    t.integer  "to_id_id"
+    t.integer  "from_id"
+    t.integer  "to_id"
     t.text     "message"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  add_index "chats", ["from_id_id"], :name => "index_chats_on_from_id_id"
-  add_index "chats", ["to_id_id"], :name => "index_chats_on_to_id_id"
+  add_index "chats", ["from_id"], :name => "index_chats_on_from_id"
+  add_index "chats", ["to_id"], :name => "index_chats_on_to_id"
 
   create_table "comments", :force => true do |t|
     t.text     "content"
