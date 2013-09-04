@@ -4,7 +4,8 @@
 <% @users.each do |user| %>
   <div class="span3">
     <h4><%= link_to "#{user.firstname} #{user.lastname}", user_path(user) %></h4>
-    <h4><%= render 'friendship', :user => user %></h4>
+    <%= render 'friendship', :user => user %>
+    <%= render 'chat', :user => user %>
     <% user.user_languages.each do |user_language| %>
       <%= user_language.language.name %>
       <%= user_language.level %>

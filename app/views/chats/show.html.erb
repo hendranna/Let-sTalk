@@ -2,3 +2,5 @@
 <% @chats.each do |chat| %>
   <li><%= chat.from.firstname %> says: <%= chat.message %></li>
 <% end %> 
+
+<%= render partial: "form" %>

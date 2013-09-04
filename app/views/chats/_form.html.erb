@@ -1,7 +1,20 @@
+<%= form_for @new_chat do |f| %>
+  <% if @chat.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@chat.errors.count, "error") %> prohibited this message from being saved:</h2>
+      <ul>
+      <% @chat.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 <div>
   <% if can? :create, current_user %>
-<!--     < %= f.label :message, 'chat' %>
-  < %= f.text_area :message, :autofocus => true, size: '100x3' %>
- -->  <% end %>
-</div>
-<!-- < %= f.submit 'Submit', class: "btn" %> -->
+    <%= f.label :message %>
+    <%= f.text_area :message, :autofocus => true, size: '100x3' %>
+    <%= f.hidden_field :to_id, value: params[:id] %>
+  <% end %>
+    <%= f.submit %>
+ </div>
+<% end %>

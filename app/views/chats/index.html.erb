@@ -1,4 +1,6 @@
 
-<% @chats.each do |chat| %>
-  <li><%= link_to chat.from.firstname, chat_path(chat.from_id) %> </li>
-<% end %>
+<!--   < % if current_user.where(friend_id: to_id).exists? %> 
+ --> <% @chats.each do |chat| %>
+      <li><%= link_to chat.from.firstname, chat_path(chat.from_id) %></li>
+    <% end %>
+ <!--  < % end %> -->

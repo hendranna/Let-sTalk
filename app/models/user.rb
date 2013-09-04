@@ -15,14 +15,17 @@ class User < ActiveRecord::Base
     too_long: "%{count} characters is the maximum allowed." }
 
   has_many :friendships
+  has_many :friends, through: :friendships
   has_many :friendships_as_friend, class_name: "Friendship", foreign_key: "friend_id"
+  has_many :friends_as_friend, through: :friendships_as_friend, source: :user
+
 
   has_many :user_languages
   has_many :languages, through: :user_languages
 
   has_many :comments
   has_many :written_comments, class_name: "Comment", foreign_key: "writer_id"
-  
+
   has_many :chats 
   has_many :chats_to, class_name: "Chat", foreign_key: "to_id"
 
@@ -38,11 +41,6 @@ class User < ActiveRecord::Base
     self.role == role
   end
 
-  private
-  def set_default_role
-    self.role ||= 'registered'
-  end
-
   # def self.find_for_authentication(conditions)
   #   conditions[:firstname].downcase!
   #   conditions[:lastname].downcase!
@@ -52,6 +50,11 @@ class User < ActiveRecord::Base
   def all_friendships
     friendships + friendships_as_friend
   end
+
+  def all_friends
+    (friends + friends_as_friend).uniq
+  end
+
 
   def self.from_omniauth(auth)
     if user = User.find_by_email(auth.info.email)
@@ -78,6 +81,11 @@ class User < ActiveRecord::Base
 
 
   
+  private
+  def set_default_role
+    self.role ||= 'registered'
+  end
+
 
 
 
