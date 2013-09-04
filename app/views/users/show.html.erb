@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-
+<div class="span8 well offset2 row text-center">
 <h3><%= @user.firstname %> <%= @user.lastname %></h3>
   
   <% if @user.avatar? %>
@@ -53,3 +53,4 @@
 <% end %>
 <br/>
 <%= link_to 'Back', users_path %>
+</div>
