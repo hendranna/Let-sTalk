@@ -14,7 +14,7 @@
 
   <div>
   <% if can? :edit, @comment %>
-      <%= link_to 'Delete',comment(@comment)%>
+    <%= link_to 'Delete',comment_path(@comment)%>
   <% end %>
     <%= link_to 'Back', user_path(@comment.user.id)%>
   </div
