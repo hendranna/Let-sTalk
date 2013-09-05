@@ -17,7 +17,7 @@ gem 'kaminari'
 gem 'nested_form', :git => 'https://github.com/ryanb/nested_form.git'
 gem 'high_voltage'
 gem 'pry'
-
+gem 'twitter-bootstrap-rails'
 
 
 # Gems used only for assets and not required
@@ -25,7 +25,7 @@ gem 'pry'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-  gem 'twitter-bootstrap-rails' 
+   
   
 
 
