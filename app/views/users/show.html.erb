@@ -39,7 +39,7 @@
       <%= "#{comment.writer.firstname} #{comment.writer.lastname}" %> on <%= comment.created_at.strftime('%c') %><br />
       <%= comment.content %>
       <% if can? :destroy, comment %>
-        <%= link_to 'Delete', comment, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger"  %>
+        <%= link_to 'Delete', user_comment(@user, comment), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger"  %>
       <% end %>
     <% end %>   
   </div><br>
