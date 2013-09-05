@@ -1,4 +1,1 @@
-
-<% if current_user.all_friends.include?(user) %>
-  <%= button_to 'chat now', chat_path(id: user.id), method: :get, :class => "btn" %>
-<% end %>
+<%= button_to 'chat now', chat_path(id: user.id), method: :get, :class => "btn" %>
