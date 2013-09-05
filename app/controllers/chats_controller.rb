@@ -10,6 +10,9 @@ class ChatsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @chats }
+    end
+  end
+
 
 
   # GET /chats/1
@@ -39,7 +42,7 @@ class ChatsController < ApplicationController
   # POST /chats
   # POST /chats.json
   def create
-<<<<<<< HEAD
+
     @chat = Chat.new(params[:chat])
     @chat.from_id = current_user.id
     
