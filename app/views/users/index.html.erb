@@ -1,5 +1,8 @@
-<h1>Let's Talk</h1>
-<%= content_for :page_title, 'HighVoltage-About' %>
+<%= content_for :page_title, "Let's Talk" %>
+
+<div class="row span12 text-center">
+  <h1>Let's Talk</h1>
+</div>
 <div class="">
 <% @users.each do |user| %>
   <div class="span3">
@@ -14,15 +17,24 @@
     <% if user.avatar? %>
       <%= link_to image_tag(user.avatar_url(:detail)), "#info#{user.id}"%>
     <% else %>
-      <%= link_to image_tag('rails.png'), "#info#{user.id}"%>
+      <%= link_to image_tag('smile.png'), "#info#{user.id}"%>
     <% end %>
 
-    <section>
-      <label class="label label-success">
-        <%= link_to pluralize(user.friendships.count, "Favourite") %> |
-        <%= link_to pluralize(user.friendships_as_friend.count, "Follower") %>
+
+    <section class="text-center">
+      <label class="">
+        <%= link_to pluralize(user.friendships.count, "Friend"), user_friendships_path(user) %> |
+        <%= link_to pluralize(user.friendships_as_friend.count, "Follower"), user_followers_path(user) %>
       </label>
     </section>
+
+     <% user.user_languages.each do |user_language| %>
+      <span class="">
+        <i class="icon icon-flag"></i>
+        <%= user_language.language.name %>
+        <%= user_language.level %>
+      </span>
+    <% end %>
     
     <section id="info<%= user.id %>" class="hidden">
       <%= user.languages %><br />
@@ -34,8 +46,10 @@
   </div>
 <% end %>
 </div>
-<%= paginate @users %>
 
+<div class="row span12 text-center">
+  <%= paginate @users %>
+</div>
 
 
 

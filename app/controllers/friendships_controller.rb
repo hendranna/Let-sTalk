@@ -3,7 +3,26 @@ class FriendshipsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @friends = current_user.friends
+
+    @friendships = Friendship.where(:user_id => params[:user_id])
+
+    @friends = []
+    @friendships.each do |friendship|
+      @friends << User.find_by_id(friendship.friend_id)
+    end
+    @friends
+  end
+
+  def followers
+
+    @friendships = Friendship.where(:friend_id => params[:user_id])
+
+    @followers = []
+    @friendships.each do |friendship|
+      @followers << User.find_by_id(friendship.user_id)
+    end
+    @followers
+
   end
 
   def new

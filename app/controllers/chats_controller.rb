@@ -10,8 +10,7 @@ class ChatsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @chats }
-    end
-  end
+
 
   # GET /chats/1
   # GET /chats/1.json
@@ -22,6 +21,7 @@ class ChatsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @chats }
+
     end
   end
 
@@ -29,7 +29,7 @@ class ChatsController < ApplicationController
   # GET /chats/new.json
   def new
     @chat = Chat.new
-    
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @chats }
@@ -39,6 +39,7 @@ class ChatsController < ApplicationController
   # POST /chats
   # POST /chats.json
   def create
+<<<<<<< HEAD
     @chat = Chat.new(params[:chat])
     @chat.from_id = current_user.id
     
@@ -57,8 +58,9 @@ class ChatsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to user_path(current_user) }
-      format.json { head :no_content }
+    @user = @chat.user
+    @chat.destroy
     end
   end
-
 end
+

@@ -47,20 +47,28 @@
           </a>
           <!-- <a class="brand" href="">Talk2me</a> -->
           <%= link_to image_tag("talk.png"), root_path, :class => "brand" %>
+          <%= link_to "Let's Talk", root_path, :class => "brand" %>
+          
           <div class="container-fluid nav-collapse">
+            <ul class="nav pull-left">
+                <li><%= link_to 'About Us', page_path('about') %></li>
+                <% if current_user %>
+                <li><%= link_to 'My Profile', user_path(current_user) %></li>
+                <% end %>
+              </ul>
              <ul class="nav pull-right">
-          <li>
-            <%= form_tag search_path, class: "nav-search pull-left", html: {method: :post} do |f| %>
-              <%= text_field_tag :q, params[:q], class: "search-query" %>
-              <%= submit_tag 'Search!' , name: nil,  class: "btn" %>
-            <% end %>
-          </li>
-            <ul class="nav pull-right">
+              <li>
+                <%= form_tag search_path, :class => "navbar-form pull-left", html: {method: :post} do |f| %>
+                  <%= text_field_tag :q, params[:q], :class => "search-query" %>
+                  <%= submit_tag 'Search!' , name: nil,  :class => "btn" %>
+                <% end %>
+              </li>
               <% unless current_user %>
                 <li><%= link_to "Login", new_user_session_path(@user) %></li>
               <% end %>
               <% if current_user %>
                 <li><%= link_to 'Logout', destroy_user_session_path(@user), :method => :delete %></li>
+                
               <% else %>
                 <li><%= link_to "Register", new_user_registration_path  %></li>
                 <li><%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2) %></li>
@@ -75,7 +83,7 @@
       <div id="main" class="container-fluid clear-top">
         <%= bootstrap_flash %>
         <div class="row-fluid">
-          <div class="span12">
+          <div class="span8 offset2 text-center">
             <%= yield %>
           </div>
         </div><!--/row-->
