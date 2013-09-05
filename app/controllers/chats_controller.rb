@@ -1,6 +1,5 @@
 class ChatsController < ApplicationController
-
-  load_and_authorize_resource
+  before_filter :authenticate_user!
 
   # GET /chats
   # GET /chats.json
@@ -20,6 +19,7 @@ class ChatsController < ApplicationController
   def show
     @chats = Chat.where("(from_id = ? AND to_id = ?) OR (from_id = ? AND to_id = ?)", current_user, params[:id], params[:id], current_user).order(:created_at)
     @new_chat = Chat.new
+    @chat = Chat.new
 
     respond_to do |format|
       format.html # show.html.erb
