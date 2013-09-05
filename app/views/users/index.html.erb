@@ -1,8 +1,9 @@
+<div class=" span12 well text-center">
 <%= content_for :page_title, "Let's Talk" %>
 
-<div class="row span12 text-center">
+
   <h1>Let's Talk</h1>
-</div>
+
 <div class="">
 <% @users.each do |user| %>
   <div class="span3">
@@ -49,6 +50,7 @@
 
 <div class="row span12 text-center">
   <%= paginate @users %>
+</div>
 </div>
 
 
