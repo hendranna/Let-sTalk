@@ -13,6 +13,9 @@ body {
   background-image: url('back.png');
 }
 
+.well {
+  opacity: 0.9;
+}
 
 .brand img {
   height: 16px;
@@ -53,6 +56,6 @@ html,body {
   }
 }
 
-  footer ul li {
-    list-style: none;
+ul li {
+    list-style: none !important;
   }

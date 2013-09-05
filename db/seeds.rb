@@ -5,3 +5,22 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Language.delete_all
+
+languages = ["German", "French", "Italian", "Russian"]
+
+languages.each do |language| 
+  Language.new(:name => language).save
+end
+
+puts "languages added"
+
+User.delete_all
+
+puts "Creating Admins"
+admin = {:firstname => "Anna", :lastname => "Hendre", :biography => "Nothing special about me",:skype_account => "hendranna", :email => "hendrannah@gmail.com", :password => "password", :password_confirmation => "password"  }
+user = User.new(admin)
+user.role = "admin"
+user.save
+puts "admin created"

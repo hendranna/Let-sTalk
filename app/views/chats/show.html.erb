@@ -1,8 +1,12 @@
 <div class="span8 well offset2 row text-center">
 <h2>What did you say ???</h2>
+<ul>
 <% @chats.each do |chat| %>
-  <li><%= chat.from.firstname %> says: <%= chat.message %></li>
+  <li class="well">
+    <h3><%= chat.from.firstname %> says:</h3>
+   <%= chat.message %></li>
 <% end %> 
+</ul>
 
 <%= render partial: "form" %>
 </div>

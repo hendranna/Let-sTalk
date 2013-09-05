@@ -34,14 +34,26 @@
       <p> Please <%= link_to 'log in', login_path %> to leave a comment </p>
     <% end %>
 
-  <div>
-    <% @user.comments.each do |comment| %>
-      <%= "#{comment.writer.firstname} #{comment.writer.lastname}" %> on <%= comment.created_at.strftime('%c') %><br />
-      <%= comment.content %>
-      <% if can? :destroy, comment %>
-        <%= link_to 'Delete', user_comment_path(@user, comment), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger"  %>
+  <div class="">
+    <ul>
+    <% @user.comments[0..2].each do |comment| %>
+      <li class="well text-left">
+
+        <h3><%= "#{comment.writer.firstname} #{comment.writer.lastname}:" %></h3>
+        <p class="">
+        <%= comment.content%>
+      </p>
+        <span class="pull-right">
+          on <%= comment.created_at.strftime('%c') %>
+        <% if can? :destroy, comment %>
+          <%= link_to 'Delete', user_comment_path(@user, comment), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-mini btn-danger"  %>
+        </span>
+        <br/>
+
+      </li>
       <% end %>
     <% end %>   
+    <ul>
   </div><br>
 <%= render "comments/form"%> <% if can? :create, @comment %> <% end %>
 
